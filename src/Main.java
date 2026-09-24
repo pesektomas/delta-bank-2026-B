@@ -1,7 +1,7 @@
-import accounts.BankAccount;
-import accounts.CurrentAccount;
-import accounts.StudentAccount;
+import accounts.*;
 import person.AccountOwner;
+import transfer.DepositTransferService;
+import transfer.WithdrawTransferService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +15,19 @@ public class Main {
 
         BankAccount bankAccount = new CurrentAccount(accountOwner, "123", 500);
         BankAccount studentAccount = new StudentAccount(accountOwner, "123", 500, "Delta");
+        BankAccount savingAccount = new SavingAccount(accountOwner, "123");
+
 
         List<BankAccount> bankAccounts = new ArrayList<>();
         bankAccounts.add(bankAccount);
         bankAccounts.add(studentAccount);
 
+
+        for (BankAccount account: bankAccounts){
+            if (account instanceof InterestPoint) {
+                ((InterestPoint)account).calculateInterest();
+            }
+        }
 
         for (BankAccount account: bankAccounts){
 
@@ -35,17 +43,22 @@ public class Main {
 
         printBalance(bankAccount);
 
-        bankAccount.add(400);
-        bankAccount.add(100);
-        bankAccount.add(200);
-        bankAccount.add(600);
+        DepositTransferService depositTransferService = new DepositTransferService();
+        depositTransferService.deposit(bankAccount, 400);
+        depositTransferService.deposit(bankAccount, 100);
+        depositTransferService.deposit(bankAccount, 200);
+        depositTransferService.deposit(bankAccount, 600);
 
         printBalance(bankAccount);
 
-        bankAccount.sub(300);
-        bankAccount.sub(100);
-        bankAccount.sub(50);
-        bankAccount.sub(400);
+        WithdrawTransferService withdrawTransferService = new WithdrawTransferService();
+
+        withdrawTransferService.withdraw(bankAccount, 300);
+        withdrawTransferService.withdraw(bankAccount, 300);
+
+        withdrawTransferService.withdraw(bankAccount, 100);
+        withdrawTransferService.withdraw(bankAccount, 50);
+        withdrawTransferService.withdraw(bankAccount, 400);
 
         printBalance(bankAccount);
 

@@ -1,16 +1,11 @@
-# Ukol do 17.9.
+# Ukol do 1.10.
 
-Vytvořit další typy účtů a rozšířit stávající:
 
-**Studentský účet**
-- povolit výběr 5 000 do záporu
+## Přidat readme se jménen
 
-**Spořící účet**
-- když přidám peníze na účet, připíše se mi i 0,5% úrok
+## Implementovat převody mezi dvěma účty
 
-**Podnikatelský účet**
-- každý výběr odečte transakční poplatek 1%
-
-Poslat odkaz na github repozitář maile
-
-mail: tomas.pesek@delta-skola.cz
+1. Vytvořit novou service pro převod mezi dvěma účty
+2. Ošetřit vstupy
+3. Pro převod z business account odečíst poplatek 0.3% převáděné částky
+4. Nasimulovaný přístup v Main
