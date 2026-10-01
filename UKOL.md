@@ -1,11 +1,9 @@
-# Ukol do 1.10.
+# Ukol do 8.10.
 
 
-## Přidat readme se jménen
+## Přidat historii transakcí
 
-## Implementovat převody mezi dvěma účty
-
-1. Vytvořit novou service pro převod mezi dvěma účty
-2. Ošetřit vstupy
-3. Pro převod z business account odečíst poplatek 0.3% převáděné částky
-4. Nasimulovaný přístup v Main
+1. Vytvořit objet, který bude obsahovat data transakcí (zamyslet se co ukládat)
+2. Vytvořit factory pro tento objekt
+3. Vytvořit TransferLoggerService, která bude ukládat data do Listu nebo Mapy
+4. Použít tuto service na místech kde dochází k přesunu

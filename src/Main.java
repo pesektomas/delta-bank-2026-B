@@ -1,5 +1,6 @@
 import accounts.*;
 import person.AccountOwner;
+import person.AccountOwnerFactory;
 import transfer.DepositTransferService;
 import transfer.WithdrawTransferService;
 
@@ -10,8 +11,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        AccountOwner accountOwner = new AccountOwner("Tomas", "Pesek");
-        accountOwner.setLastName("Pokorny");
+        AccountOwnerFactory accountOwnerFactory = new AccountOwnerFactory();
+
+        AccountOwner accountOwner = accountOwnerFactory
+                .createAccountOwner("Tomas", "Pesek");
 
         BankAccount bankAccount = new CurrentAccount(accountOwner, "123", 500);
         BankAccount studentAccount = new StudentAccount(accountOwner, "123", 500, "Delta");
