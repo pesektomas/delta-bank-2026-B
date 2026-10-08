@@ -1,9 +1,9 @@
-# Ukol do 8.10.
+# Ukol do 22.10.
 
 
-## Přidat historii transakcí
+## Použít knihovnu na XML
 
-1. Vytvořit objet, který bude obsahovat data transakcí (zamyslet se co ukládat)
-2. Vytvořit factory pro tento objekt
-3. Vytvořit TransferLoggerService, která bude ukládat data do Listu nebo Mapy
-4. Použít tuto service na místech kde dochází k přesunu
+1. Na maven central repository najít vhodnou knihovnu pro XML serializaci
+2. Použít jí stejně jako knihovnu GSON kterou používáme na JSON serializaci
+    - vytvořit novou serializační službu pro tuto knihovnu
+    - použít jí místo původní implementace
