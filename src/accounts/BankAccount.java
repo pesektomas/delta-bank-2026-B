@@ -22,15 +22,13 @@ public abstract class BankAccount {
 
     private NotifierService notifierService = new ConsoleNotifierService();
 
-    public BankAccount(AccountOwner accountOwner, String accountNumber) {
-        this.uuid = UUID.randomUUID().toString();
+    public BankAccount(AccountOwner accountOwner) {
         this.accountOwner = accountOwner;
-        this.accountNumber = accountNumber;
         this.balance = 0;
     }
 
-    public BankAccount(AccountOwner accountOwner, String accountNumber, double balance) {
-        this(accountOwner, accountNumber);
+    public BankAccount(AccountOwner accountOwner, double balance) {
+        this(accountOwner);
 
         this.balance = balance;
     }
@@ -41,5 +39,17 @@ public abstract class BankAccount {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }

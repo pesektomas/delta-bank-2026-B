@@ -4,8 +4,7 @@ import person.AccountOwner;
 
 public class BusinessAccount extends BankAccount {
 
-    public BusinessAccount(AccountOwner accountOwner, String accountNumber) {
-        super(accountOwner, accountNumber);
+    public BusinessAccount(AccountOwner accountOwner, double balance) {
+        super(accountOwner, balance);
     }
-
 }
