@@ -4,18 +4,25 @@ import accounts.BankAccount;
 
 import java.util.List;
 
-public class BankAccountXmlSerializer implements BankAccountSerializer {
+public class BankAccountJsonSerializer implements BankAccountSerializer {
 
     BankAccountSerializeFactory bankAccountSerializeFactory = new BankAccountSerializeFactory();
 
     public String serializeAll(List<BankAccount> bankAccounts) {
         StringBuilder builder = new StringBuilder();
 
-        builder.append("<root>");
+        builder.append("[");
+
+        int i = 0;
         for (BankAccount bankAccount : bankAccounts) {
             builder.append(this.serialize(bankAccount));
+            i ++;
+
+            if (i != bankAccounts.size()) {
+                builder.append(",");
+            }
         }
-        builder.append("</root>");
+        builder.append("]");
 
         return builder.toString();
     }
@@ -26,11 +33,11 @@ public class BankAccountXmlSerializer implements BankAccountSerializer {
 
         StringBuilder builder = new StringBuilder();
 
-        builder.append("<bankAccountNumber>");
-        builder.append(bankAccountSerialize.accountNumber);
-        builder.append("</bankAccountNumber>");
+        builder.append("{");
+        builder.append("\"accountNumber\": ");
+        builder.append("\"" + bankAccountSerialize.accountNumber + "\"");
+        builder.append("}");
 
         return builder.toString();
     }
-
 }

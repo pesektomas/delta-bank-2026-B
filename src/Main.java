@@ -1,4 +1,7 @@
 import accounts.*;
+import accounts.serialization.BankAccountGsonSerializer;
+import accounts.serialization.BankAccountJsonSerializer;
+import accounts.serialization.BankAccountSerializer;
 import accounts.serialization.BankAccountXmlSerializer;
 import accounts.services.BankAccountService;
 import person.AccountOwner;
@@ -24,12 +27,20 @@ public class Main {
         BankAccount savingAccount = bankAccountService.createSavingBankAccount(accountOwner, 500);
         BankAccount businessAccount = bankAccountService.createBusinessBankAccount(accountOwner, 500);
 
-        BankAccountXmlSerializer bankAccountXmlSerializer = new BankAccountXmlSerializer();
+        BankAccountSerializer bankAccountJsonSerializer = new BankAccountGsonSerializer();
+        BankAccountSerializer bankAccountXmlSerializer = new BankAccountXmlSerializer();
+
         String bankAccountXml = bankAccountXmlSerializer.serialize(bankAccount);
         String bankAccountXmlAll = bankAccountXmlSerializer.serializeAll(bankAccountService.getBankAccounts());
 
+        String bankAccountJson = bankAccountJsonSerializer.serialize(bankAccount);
+        String bankAccountJsonAll = bankAccountJsonSerializer.serializeAll(bankAccountService.getBankAccounts());
+
         System.out.println(bankAccountXml);
         System.out.println(bankAccountXmlAll);
+
+        System.out.println(bankAccountJson);
+        System.out.println(bankAccountJsonAll);
 
 
         for (BankAccount account: bankAccountService.getBankAccounts()){
